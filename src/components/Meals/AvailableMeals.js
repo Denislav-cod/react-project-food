@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import classes from "./AvailableMeals.module.css";
-// import DUMMY_MEALS from "../../assests/dummy-meals"
+
 import axios from "axios";
 import MealItem from "./MealItem"
 import Card from "../UI/Card"
@@ -18,7 +18,7 @@ const AvailableMeals = (props) => {
         const getAvailableItems = async () => {
             setError(null);
             try {
-                const response = await axios.get("https://react-foodsite-default-rtdb.europe-west1.firebasedatabase.app/meals.json");
+                const response = await axios.get("http://localhost:3001/meals");
                 const data = await response.data;
                 const loadedMeals = [];
                 for (const key in data) {
