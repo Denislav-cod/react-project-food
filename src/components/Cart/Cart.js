@@ -14,10 +14,6 @@ const Cart = (props) => {
         props.onHideCart()
     };
 
-    // const handelPostRequest = async () => {
-    //     await axios.post("https://react-foodsite-default-rtdb.europe-west1.firebasedatabase.app/orders.json", {order: order, totalAmount: totalAmount})
-    // } 
-    
     const cartItemRemoveHandler = (id) => {
         ctx.removeItem(id)
     };

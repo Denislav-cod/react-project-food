@@ -12,21 +12,6 @@ const Checkout = (props) => {
 
     const submitData = async (event) => {
         event.preventDefault();
-        const order = {
-            orderInfo: props.order,
-            status: "pending",
-            userInfo: {
-                name: name,
-                street: street,
-                postal: postal,
-                city: city
-            },
-            
-        };
-        const response = await axios.post("https://react-foodsite-default-rtdb.europe-west1.firebasedatabase.app/orders.json", order)
-            .catch((error) => {
-                console.log(error);
-            })
     }
 
     const nameChangeHandler = (event) => {
