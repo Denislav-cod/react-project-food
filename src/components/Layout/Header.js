@@ -3,6 +3,7 @@ import classes from './Header.module.css';
 
 import mealsImage from '../../assests/meals.jpg'
 import HeaderCartButton from "./HeaderCartButton";
+import MainNavigation from "./MainNavigation";
 
 
 
@@ -14,6 +15,7 @@ const Header = (props) => {
         <React.Fragment>
             <header className={classes.header}>
                 <h1>ReactMeals</h1>
+                <MainNavigation/>
                 <HeaderCartButton onClick={handelCart} />
             </header>
             <div className={classes['main-image']}>
