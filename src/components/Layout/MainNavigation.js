@@ -1,14 +1,24 @@
-import { useState } from "react";
-import classes from "./MainNavigation.module.css"
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import classes from "./MainNavigation.module.css";
 
 const MainNavigation = () => {
     const [isAdmin, setIsAdmin] = useState(true);
+    const [isLggedin, setIsLoggedIn] = useState(false);
     return (
         <nav className={classes.nav}>
             <ul>
-                {isAdmin && <li><a>Admin panel</a></li>}
-                <li><a>Login</a></li>
-                <li><a>Registration</a></li>
+                {isLggedin &&
+                    <React.Fragment>
+                        {isAdmin && <li><Link to="/admin">Admin panel</Link></li>}
+                    </React.Fragment>
+                }
+                {!isLggedin &&
+                    <React.Fragment>
+                        <li><Link to="/login">Login</Link></li>
+                        <li><Link to="/registration">Registration</Link></li>
+                    </React.Fragment>
+                }
             </ul>
         </nav>
     );

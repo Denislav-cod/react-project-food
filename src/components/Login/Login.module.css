@@ -1,0 +1,35 @@
+.login {
+  max-width: 40%;
+  width: 90%;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.button{
+  margin-top: 50px;
+  width: 100%;
+  background-color: #ffffff;
+  color: #080710;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.control {
+    margin-bottom: 0.5rem;
+  }
+  
+  .control label {
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+    display: block;
+  }
+  
+  .control input {
+    font: inherit;
+    border: 1px solid #080710;
+    border-radius: 4px;
+    width: 20rem;
+    max-width: 100%;
+  }
