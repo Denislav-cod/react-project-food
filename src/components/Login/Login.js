@@ -17,7 +17,7 @@ const Login = () => {
 
         //Later add validation and maybe create one auth file with button for change registration or login;
         try {
-            const response = await axios.post("http://localhost:3001/users/login",
+            const response = await axios.post("http://localhost:3001/user/login",
                 {
                     name: enteredName,
                     password: enteredPassword

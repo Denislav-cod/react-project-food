@@ -24,10 +24,10 @@ function App() {
       <Header onShowCart={showCartHandler} />
       <main>
         <Switch>
-          <Route path="/login">
+          <Route path="/user/login">
             <Login/>
           </Route>
-          <Route path="/registration">
+          <Route path="/user/registration">
             <Registration />
           </Route>
           <Route path="/admin">

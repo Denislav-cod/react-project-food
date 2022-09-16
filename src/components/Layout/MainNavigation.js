@@ -15,8 +15,8 @@ const MainNavigation = () => {
                 }
                 {!isLggedin &&
                     <React.Fragment>
-                        <li><Link to="/login">Login</Link></li>
-                        <li><Link to="/registration">Registration</Link></li>
+                        <li><Link to="/user/login">Login</Link></li>
+                        <li><Link to="/user/registration">Registration</Link></li>
                     </React.Fragment>
                 }
             </ul>

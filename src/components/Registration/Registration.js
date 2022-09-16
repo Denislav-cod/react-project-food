@@ -17,7 +17,7 @@ const Registration = () => {
 
         //Later add validation same as login comment;
         try {
-            const response = await axios.post("http://localhost:3001/users/registration",
+            const response = await axios.post("http://localhost:3001/user/registration",
                 {
                     name: enteredName,
                     email: enteredEmail,
