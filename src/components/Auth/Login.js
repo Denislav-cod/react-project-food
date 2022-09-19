@@ -23,7 +23,12 @@ const Login = () => {
                     password: enteredPassword
                 }
             );
-            console.log(response);
+            if(response.statusText === "OK"){
+                console.log(response);
+            }else{
+                throw new Error("Not true");
+            }
+                
         } catch (error) {
             setError(error.message)
             setIsError(true);

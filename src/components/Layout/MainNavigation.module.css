@@ -1,7 +1,7 @@
 .nav ul {
     list-style: none;
     display: flex;
-    margin: 0;
+    margin: 2rem;
     padding: 0;
 }
 
@@ -20,3 +20,9 @@
 .nav a.active {
     color: slategray;
 }
+
+@media only screen and (max-width: 600px) {
+    .nav {
+        align-items: center;
+    }
+  }

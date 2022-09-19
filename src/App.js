@@ -4,8 +4,8 @@ import Header from './components/Layout/Header'
 import Meals from "./components/Meals/Meals";
 import Cart from "./components/Cart/Cart";
 import CartProvider from "./store/CartProvider";
-import Login from "./components/Login/Login";
-import Registration from "./components/Registration/Registration";
+import Login from "./components/Auth/Login";
+import Registration from "./components/Auth/Registration";
 import AdminPanel from "./components/AdminPanel/AdminPanel"
 
 function App() {
