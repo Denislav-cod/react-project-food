@@ -20,9 +20,3 @@
 .nav a.active {
     color: slategray;
 }
-
-@media only screen and (max-width: 600px) {
-    .nav {
-        align-items: center;
-    }
-  }
