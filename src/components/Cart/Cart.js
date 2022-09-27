@@ -1,21 +1,24 @@
-import React, { useContext, useState } from "react";
+import React, {  useState } from "react";
 
 import classes from "./Cart.module.css";
 import Modal from "../UI/Modal";
-import CartContext from "../../store/cart.context"
+import { useSelector, useDispatch } from "react-redux";
+import { cartActions } from "../../reduxstore/cart-slice";
 import CartItem from "./CartItem";
 import Checkout from "./Checkout";
 
 const Cart = (props) => {
-    const [checkout, setCheckout] = useState(false)
-    const ctx = useContext(CartContext);
-    const totalAmount= `$${ctx.totalAmount.toFixed(2)}`;
+    const [checkout, setCheckout] = useState(false);
+    const dispatch = useDispatch();
+    const items = useSelector(state => state.cart.items);
+    const ttlPrice = useSelector(state => state.cart.totalPrice);
+    const totalPrice = `$${ttlPrice.toFixed(2)}`;
     const handleCart = () => {
         props.onHideCart()
     };
 
     const cartItemRemoveHandler = (id) => {
-        ctx.removeItem(id)
+        dispatch(cartActions.removeItem({id}))
     };
 
     const activateCheckout = () => {
@@ -23,11 +26,11 @@ const Cart = (props) => {
     };
 
     const cartItemAddHandler = (item) => {
-        ctx.addItem({...item,amount: 1})
+        dispatch(cartActions.addItem({ ...item, amount: 1 }));
     };
 
-    const cartItems = ctx.items.map( (item) => (
-        <ul  ><CartItem price={item.price} onRemove={cartItemRemoveHandler.bind(null, item.id)} onAdd={cartItemAddHandler.bind(null, item)} name={item.name} amount={item.amount}/></ul>
+    const cartItems = items.map((item) => (
+        <ul><CartItem id={item.id} price={item.price} onRemove={cartItemRemoveHandler.bind(null, item.id)} onAdd={cartItemAddHandler.bind(null, item)} name={item.name} amount={item.amount} /></ul>
     )
     );
 
@@ -39,12 +42,12 @@ const Cart = (props) => {
         {cartItems}
         <div onClick={handleCart} className={classes.total}>
             <span>TotalAmount</span>
-            <span>{totalAmount}</span>
+            <span>{totalPrice}</span>
         </div>
         <div className={classes.actions}>
             <button onClick={handleCart} className={classes['button--alt']}>Close</button>
-            <button className={classes.button} disabled={ctx.items.length === 0} onClick={activateCheckout}>Order</button>
-            {checkout && <Checkout order={ctx.items} totalAmount={totalAmount} onHandleCheckout={props.onHideCart} onCancel={cancelHandler}/>}
+            <button className={classes.button} onClick={activateCheckout}>Order</button>
+            {checkout && <Checkout order={items.items} totalAmount={totalPrice} onHandleCheckout={props.onHideCart} onCancel={cancelHandler} />}
         </div>
     </Modal>);
 }

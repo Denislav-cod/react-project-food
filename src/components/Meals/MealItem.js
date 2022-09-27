@@ -1,15 +1,14 @@
-import React, { useContext } from "react";
-import CartContext from "../../store/cart.context";
-
+import React from "react";
+import { cartActions } from "../../reduxstore/cart-slice";
+import { useDispatch } from "react-redux";
 import classes from './MealItem.module.css'
 import MealItemForm from './MealItemForm'
 
 const MealItem = (props) => {
+    const dispatch = useDispatch();
 
-    const ctx = useContext(CartContext)
-
-    const addToCartHandler = amount => {
-        ctx.addItem({id:props.id, name:props.name, amount: amount, price: props.price});
+    const addToCartHandler = (amount) => {
+        dispatch(cartActions.addItem({ id: props.id, name: props.name, amount: amount, price: props.price }));
     };
     return (
         <li className={classes.meal}>
@@ -17,7 +16,7 @@ const MealItem = (props) => {
                 <div className={classes.description}>{props.description}</div>
                 <div className={classes.price}>{props.price}</div>
             </div>
-            <div><MealItemForm onAddToCart={addToCartHandler}/></div>
+            <div><MealItemForm onAddToCart={addToCartHandler} /></div>
         </li>
     );
 }

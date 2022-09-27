@@ -1,11 +1,12 @@
-import { useState, useRef, useContext } from "react";
-import AuthContext from '../../store/auth.contexet';
+import { useState, useRef, } from "react";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../reduxstore/auth-slice";
 import axios from "axios";
 import Card from "../UI/Card";
 import classes from "./Login.module.css";
 
 const Login = () => {
-    const ctx = useContext(AuthContext);
+    const dispatch = useDispatch();
     const [error, setError] = useState();
     const [isError, setIsError] = useState(false);
     const emailRef = useRef();
@@ -26,14 +27,14 @@ const Login = () => {
                 }
             );
             if (response.statusText === "OK") {
-                const data =  response.data;
-                ctx.login(data.user,data.user.token);
+                const data = response.data;
+                dispatch(authActions.loginAction(data));
             }
         } catch (error) {
             setError(error.message)
             setIsError(true);
         }
-            
+
     }
 
     return (

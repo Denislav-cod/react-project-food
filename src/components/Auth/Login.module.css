@@ -3,6 +3,7 @@
   width: 90%;
   margin: 2rem auto;
   text-align: center;
+  animation: login-appear 1s ease-out forwards;
 }
 
 .button{
@@ -32,4 +33,16 @@
     border-radius: 4px;
     width: 20rem;
     max-width: 100%;
+  }
+
+  @keyframes login-appear {
+    from {
+      opacity: 0;
+      transform: translateY(3rem);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
